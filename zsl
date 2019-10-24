@@ -1,0 +1,57 @@
+
+
+grid_width=30
+grid_height=30
+rows = 10
+columns = 10
+x_size = grid_width * columns
+y_size = grid_height * rows
+
+game_data=[[0 for col in range(columns)] for row in range(rows)]
+
+
+#game_data[0][5]=1
+game_data[0][3]=1  
+
+
+def getNewSnakeHead() :
+  for r in range(rows):
+    for c in range(columns):
+        if game_data[r][c] == 1:
+            new_r=r
+            new_c=c+1
+            return new_r,new_c
+new_r=0
+def move_snake(new_r,new_c):
+    if new_r and new_c is not None:
+        new_r,new_c=getNewSnakeHead()
+    #print("the value of new_r,new_c is " + str(getNewSnakeHead()))
+    clearData()
+    game_data[new_r][new_c]=1 
+    return game_data
+
+def clearData():
+    for y in range(len(game_data)):
+        for x in range(len(game_data[y])):
+            game_data[y][x]=0
+
+
+ 
+#print
+print("the new position of head is"+str(getNewSnakeHead()))
+print("game data is: ") 
+for row in game_data :
+  print(row)
+
+#call the function
+getNewSnakeHead()
+clearData()
+move_snake(new_r,new_c)
+
+#see if the output is correct
+print("the game data is now:")
+for row in game_data :
+  print(row)
+
+                
+    

@@ -7,6 +7,29 @@ x_size = grid_width * columns
 y_size = grid_height * rows
 
 game_data=[[0 for col in range(columns)] for row in range(rows)]
+game_data[3][4]=1
+
+def getNewSnakeHead() :
+    for r in range(rows):
+        for c in range(columns):
+            if game_data[r][c] == 1:
+                new_r=r
+                new_c=c+1
+                return new_r,new_c
+            
+def clearData():
+    for y in range(len(game_data)):
+        for x in range(len(game_data[y])):
+            game_data[y][x]=0        
+
+def move_snake():
+    if getNewSnakeHead() is not  None:
+        new_r,new_c=getNewSnakeHead()
+        clearData()
+        game_data[new_r][new_c]=1 
+    return game_data
+
+
 
 def draw_rect():
     screen.fill((0,0,0))
@@ -37,7 +60,10 @@ while not done:
     
     # Draw the game
     draw_rect()
-    
+    #call the function
+    getNewSnakeHead()
+    move_snake()
+    move_snake()
     # handle FPS
     clock.tick(20)          
                 
