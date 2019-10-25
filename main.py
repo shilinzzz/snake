@@ -8,7 +8,7 @@ y_size = grid_height * rows
 
 game_data=[[0 for col in range(columns)] for row in range(rows)]
 
-game_data[2][2]=1
+game_data[3][4]=1 
 
 def getSnakeHead() :
     for r in range(rows):
